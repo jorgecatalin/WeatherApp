@@ -13,6 +13,13 @@ export default function Content(props) {
         "Joi",
         "Vineri",
         "Sambata",
+        "Duminica",
+        "Luni",
+        "Marti",
+        "Miercuri",
+        "Joi",
+        "Vineri",
+        "Sambata",
       ]
 
       let d = new Date()
