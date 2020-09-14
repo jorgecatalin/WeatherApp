@@ -1,6 +1,6 @@
 :root {
   --background: rgba(255, 255, 255, 1);
-  --navbarBackground: rgba(22, 22, 22, 1);
+  --navbarBackground: rgb(53, 53, 53);
   --textNavbar: rgba(255, 255, 255, 1);
   --text: rgba(55, 55, 55, 1);
   --prognozaCardBackground: rgba(55, 55, 55, 1);
@@ -30,8 +30,7 @@ a {
   user-select: none;
 }
 .App {
-  display: flex;
-  flex-direction: column;
+  overflow: hidden;
 }
 .Navbar {
   background-color: var(--navbarBackground);
@@ -62,8 +61,9 @@ a {
   margin: 0 15vw 0 15vw;
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-between;
   flex-wrap: wrap;
+  margin-top: 5vh;
 }
 .PrognozaCard {
   height: 160px;
@@ -81,13 +81,17 @@ a {
 }
 .Footer {
   margin: 0;
-  padding: 0;
+  padding: 3vh;
   width: 100vw;
   font-size: 3vh;
   display: flex;
   justify-content: center;
   background-color: var(--navbarBackground);
   color: var(--textNavbar);
+  margin-top: 10vh;
+}
+.marginTopp {
+  margin-top: 10px;
 }
 .PrognozaCardLoading {
   height: 160px;
@@ -102,6 +106,84 @@ a {
   align-items: center;
 }
 .PrognozaCardLoading img {
-  width: 70px;
-  height: 70px;
+  width: 30px;
+  height: 30px;
+}
+.PrognozaAzi {
+  margin: 0 15vw 0 15vw;
+  display: flex;
+}
+.PrognozaAziContainer {
+  background-color: var(--prognozaCardBackground);
+  color: var(--textNavbar);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px 1px gray;
+  display: flex;
+  width: 100%;
+  display: flex;
+  min-height: 350px;
+}
+.PrognozaAziContainer img {
+  width: 150px;
+  height: 150px;
+}
+.PrognozaCurentLoading {
+  height: 300px;
+  width: 100%;
+  background-color: var(--prognozaCardBackground);
+  color: var(--textNavbar);
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px 1px gray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 350px;
+}
+.PrognozaCurentLoading img {
+  width: 100px;
+  height: 100px;
+}
+.flexcolumn {
+  display: flex;
+  flex-direction: column;
+}
+.flexrow {
+  display: flex;
+  flex-direction: row;
+}
+.titluPrognoza {
+  margin: 10px 0 10px 30px;
+  font-size: 5vh;
+}
+.PrognozaGrade {
+  font-size: 130px;
+}
+.PrognozaZile {
+  margin: 10px 0 5px 30px;
+}
+
+.PrognozaDreapta {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: flex-end;
+  padding: 30px;
+  padding-top: 10px;
+}
+.fade {
+  opacity: 0;
+}
+.fade-appear {
+  transform: translate(0, 100px);
+  opacity: 0;
+}
+.fade-appear-active {
+  transform: translate(0, 0);
+  opacity: 1;
+  transition: 1000ms;
+}
+.fade-appear-done {
+  opacity: 1;
+  transition: opacity 1000ms;
 }

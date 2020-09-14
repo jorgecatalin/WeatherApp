@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react"
-
+import React from "react"
 export default function Navbar(props) {
   return (
     <div className="Navbar">
