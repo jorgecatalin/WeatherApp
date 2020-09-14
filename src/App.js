@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import Navbar from "./Componente/Navbar.js"
 import Content from "./Componente/Content.js"
 import Footer from "./Componente/Footer.js"
+import { CSSTransition } from "react-transition-group"
 
 function App() {
   const [date, setDate] = useState({})
@@ -66,7 +67,9 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar></Navbar>
+      <CSSTransition appear={true} in={true} timeout={500} classNames="fade3">
+        <Navbar></Navbar>
+      </CSSTransition>
       <Content date={date} wait={wait} oras={oras}></Content>
       <Footer></Footer>
     </div>

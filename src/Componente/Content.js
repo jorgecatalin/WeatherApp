@@ -1,5 +1,7 @@
 import React, { useEffect } from "react"
 import { CSSTransition } from "react-transition-group"
+import Chart from "./Chart.js"
+import ChartMare from "./ChartMare.js"
 let zile = [
   "Duminică",
   "Luni",
@@ -16,10 +18,17 @@ let zile = [
   "Vineri",
   "Sambătă",
 ]
+let dateChartMare = []
 export default function Content(props) {
   useEffect(() => {}, [])
   function esteIncarcatCurent() {
     if (!props.wait) {
+      const dataaa = [
+        { temp: 55, ora: "8:00" },
+        { temp: 22, ora: "12:00" },
+        { temp: 32, ora: "18:00" },
+        { temp: 22, ora: "00:00" },
+      ]
       let d = new Date()
       let n = d.getDay()
       let minute = new Date().toLocaleTimeString("ro-RO", {
@@ -54,6 +63,7 @@ export default function Content(props) {
             <div className="marginTopp">
               Vânt: {(props.date.current.wind_speed * 3.6).toFixed(1)} km/h
             </div>
+            <Chart date={props.date.daily[0].temp}></Chart>
           </div>
         </div>
       )
@@ -71,6 +81,11 @@ export default function Content(props) {
       let d = new Date()
       let n = d.getDay()
       return props.date.daily.map((item, i) => {
+        if (dateChartMare.length < 7)
+          dateChartMare.push({
+            temp: Math.floor(item.temp.max),
+            ziua: zile[n + i],
+          })
         let poza =
           "http://openweathermap.org/img/wn/" + item.weather[0].icon + "@2x.png"
         return (
@@ -100,9 +115,16 @@ export default function Content(props) {
       <CSSTransition appear={true} in={true} timeout={1000} classNames="fade">
         <div className="PrognozaAzi">{esteIncarcatCurent()}</div>
       </CSSTransition>
-      <CSSTransition appear={true} in={true} timeout={1000} classNames="fade">
+      <CSSTransition appear={true} in={true} timeout={1200} classNames="fade2">
         <div className="PrognozaTop">{esteIncarcat()}</div>
-      </CSSTransition>
+      </CSSTransition>{" "}
+      {!props.wait ? (
+        <CSSTransition appear={true} in={true} timeout={1000} classNames="fade">
+          <ChartMare date={dateChartMare}></ChartMare>
+        </CSSTransition>
+      ) : (
+        <div></div>
+      )}
     </div>
   )
 }

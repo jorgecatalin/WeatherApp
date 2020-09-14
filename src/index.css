@@ -175,7 +175,7 @@ a {
   opacity: 0;
 }
 .fade-appear {
-  transform: translate(0, 100px);
+  transform: translate(-50px);
   opacity: 0;
 }
 .fade-appear-active {
@@ -186,4 +186,41 @@ a {
 .fade-appear-done {
   opacity: 1;
   transition: opacity 1000ms;
+}
+.fade2 {
+  opacity: 0;
+}
+.fade2-appear {
+  transform: translate(50px, 0);
+  opacity: 0;
+}
+.fade2-appear-active {
+  transform: translate(0, 0);
+  opacity: 1;
+  transition: 1200ms;
+}
+.fade2-appear-done {
+  opacity: 1;
+  transition: opacity 1200ms;
+}
+.fade3-appear {
+  transform: translate(0, -50px);
+}
+.fade3-appear-active {
+  transform: translate(0, 0);
+  transition: 500ms;
+}
+.chart {
+  margin-top: 55px;
+}
+.chartMare {
+  height: 350px;
+  padding: 5vh 0 5vh 0;
+  margin: 50px 15vw 0 15vw;
+  background-color: var(--prognozaCardBackground);
+  color: var(--textNavbar);
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px 1px gray;
+  display: flex;
+  justify-content: center;
 }
