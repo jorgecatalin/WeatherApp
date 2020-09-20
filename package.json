@@ -12,8 +12,10 @@
     "react": "^16.13.1",
     "react-chartjs-2": "^2.10.0",
     "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
     "react-transition-group": "^4.4.1",
+    "react-visibility-sensor": "^5.1.1",
     "recharts": "^1.8.5"
   },
   "scripts": {

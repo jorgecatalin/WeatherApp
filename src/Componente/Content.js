@@ -1,7 +1,9 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { CSSTransition } from "react-transition-group"
 import Chart from "./Chart.js"
 import ChartMare from "./ChartMare.js"
+import VisibilitySensor from "react-visibility-sensor"
+
 let zile = [
   "Duminică",
   "Luni",
@@ -20,7 +22,17 @@ let zile = [
 ]
 let dateChartMare = []
 export default function Content(props) {
+  const [vizibil, setVizibil] = useState(false)
   useEffect(() => {}, [])
+
+  function schimbaVizibil(isVisible) {
+    console.log("intra aici", isVisible)
+    if (isVisible && !vizibil) {
+      setVizibil(true)
+
+      console.log("intra aiciwafwafwafwafwafwafwafwafwafwaf", isVisible)
+    }
+  }
   function esteIncarcatCurent() {
     if (!props.wait) {
       const dataaa = [
@@ -117,11 +129,24 @@ export default function Content(props) {
       </CSSTransition>
       <CSSTransition appear={true} in={true} timeout={1200} classNames="fade2">
         <div className="PrognozaTop">{esteIncarcat()}</div>
-      </CSSTransition>{" "}
+      </CSSTransition>
       {!props.wait ? (
-        <CSSTransition appear={true} in={true} timeout={1000} classNames="fade">
-          <ChartMare date={dateChartMare}></ChartMare>
-        </CSSTransition>
+        <VisibilitySensor onChange={schimbaVizibil}>
+          <div className="Vizibil">
+            {vizibil ? (
+              <CSSTransition
+                appear={true}
+                in={true}
+                timeout={1000}
+                classNames="fade"
+              >
+                <ChartMare date={dateChartMare}></ChartMare>
+              </CSSTransition>
+            ) : (
+              <div> </div>
+            )}
+          </div>
+        </VisibilitySensor>
       ) : (
         <div></div>
       )}

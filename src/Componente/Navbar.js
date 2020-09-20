@@ -1,11 +1,17 @@
 import React from "react"
+import { Link } from "react-router-dom"
+
 export default function Navbar(props) {
   return (
     <div className="Navbar">
       <div>WeatherApp</div>
       <div className="NavbarDreapta">
-        <div>Setari</div>
-        <div>Home</div>
+        <Link to="/WeatherApp/Setari">
+          <div>Setari</div>
+        </Link>
+        <Link to="/WeatherApp">
+          <div>Home</div>
+        </Link>
       </div>
     </div>
   )

@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from "react"
-import { LineChart, Line, Tooltip, XAxis, LabelList } from "recharts"
+import {
+  LineChart,
+  Line,
+  Tooltip,
+  XAxis,
+  LabelList,
+  ResponsiveContainer,
+} from "recharts"
 
 const renderCustomizedLabel = (props) => {
   const { x, y, width, height, value } = props
@@ -31,27 +38,23 @@ export default function Chart(props) {
   return (
     <div className="chart">
       {wait ? (
-        <LineChart
-          width={400}
-          height={150}
-          data={data}
-          allowDataOverflow={true}
-          margin={{ top: 20 }}
-        >
-          <Line type="monotone" dataKey="temp" stroke="#8884d8">
-            <LabelList
-              dataKey="temp"
-              position="top"
-              content={renderCustomizedLabel}
-            />
-          </Line>
-          <XAxis
-            interval="preserveStartEnd"
-            dataKey="ora"
-            padding={{ left: 20, right: 20 }}
-            interval={0}
-          ></XAxis>
-        </LineChart>
+        <ResponsiveContainer>
+          <LineChart data={data} allowDataOverflow={true} margin={{ top: 20 }}>
+            <Line type="monotone" dataKey="temp" stroke="#8884d8">
+              <LabelList
+                dataKey="temp"
+                position="top"
+                content={renderCustomizedLabel}
+              />
+            </Line>
+            <XAxis
+              interval="preserveStartEnd"
+              dataKey="ora"
+              padding={{ left: 20, right: 20 }}
+              interval={0}
+            ></XAxis>
+          </LineChart>
+        </ResponsiveContainer>
       ) : (
         <div></div>
       )}
